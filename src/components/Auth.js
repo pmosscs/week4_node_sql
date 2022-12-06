@@ -29,7 +29,7 @@ const Auth = () => {
         .post(`${baseURL}/register`, body)
         .then(({ data }) => {
           console.log(data);
-          authCtx.login(data.token, data.exp, data.userId); //getting error "canot read properties of undefined (reading 'login')"
+          authCtx.login(data.token, data.exp, data.userId);
         })
         .catch((err) => console.log("register error", err));
     } else {

@@ -45,7 +45,16 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(initialToken);
   const [userId, setUserId] = useState(null);
 
-  const logout = () => {};
+  const logout = () => {
+    setToken(null);
+    setUserId(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("exp");
+    if (logoutTimer) {
+      clearTimeout(logoutTimer);
+    }
+  };
 
   const login = (token, exp, userId) => {
     console.log("login function being called");
