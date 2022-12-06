@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { sequelize } = require("./util/database");
 
 const express = require("express");
 const cors = require("cors");
@@ -22,6 +23,12 @@ const {
 
 const { isAuthenticated } = require("./middleware/isAuthenticated");
 
+const { User } = require("./models/user");
+const { Post } = require("./models/post");
+
+User.hasMany(Post);
+Post.belongsTo(User);
+
 //=============endpoints============
 app.post("/register", register);
 app.post("/login", login);
@@ -32,4 +39,8 @@ app.put("/posts/:id", isAuthenticated, editPost);
 app.delete("/posts/:id", isAuthenticated, deletePost);
 
 //==============server==============
-app.listen(3000, () => console.log("App running on 3000"));
+sequelize.sync().then(() => {
+  app.listen(3000, () =>
+    console.log("***db sync successful and server running on 3000***")
+  );
+});
