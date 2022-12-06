@@ -13,22 +13,23 @@ const Auth = () => {
     e.preventDefault();
     const body = { username, password };
 
-    //transform into turnery to test things out:
-    // axios.post(register ? `${url}/register` : `${url}/login`, body)
-    //     .then(({data}) => {
-    //         console.log('AFTER AUTH', data)
-    //     })
-    //     .catch(err => {
-    //         setPassword('')
-    //         setUsername('')
-    //     })
+    // transform into turnery to test things out:
+    // axios
+    //   .post(register ? `${baseURL}/register` : `${baseURL}/login`, body)
+    //   .then(({ data }) => {
+    //     console.log("AFTER AUTH", data);
+    //   })
+    //   .catch((err) => {
+    //     setPassword("");
+    //     setUsername("");
+    //   });
 
     if (register === true) {
       axios
         .post(`${baseURL}/register`, body)
-        .then((res) => {
-          console.log(res.data);
-          authCtx.login(res.data.token, res.data.exp, res.data.userId); //getting error "canot read properties of undefined (reading 'login')"
+        .then(({ data }) => {
+          console.log(data);
+          authCtx.login(data.token, data.exp, data.userId); //getting error "canot read properties of undefined (reading 'login')"
         })
         .catch((err) => console.log("register error", err));
     } else {
