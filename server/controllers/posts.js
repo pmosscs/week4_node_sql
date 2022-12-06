@@ -1,6 +1,6 @@
 module.exports = {
   getAllPosts(req, res) {
-    console.log("get aa posts");
+    console.log("get all posts");
   },
 
   getCurrentUserPosts(req, res) {

@@ -1,9 +1,9 @@
 module.exports = {
-  login(res, req) {
-    console.log("login function");
+  register(res, req) {
+    console.log("register function");
   },
 
-  logout(res, req) {
+  login(res, req) {
     console.log("logout function");
   },
 };
