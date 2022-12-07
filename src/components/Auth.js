@@ -15,9 +15,10 @@ const Auth = () => {
 
     // transform into turnery to test things out:
     // axios
-    //   .post(register ? `${baseURL}/register` : `${baseURL}/login`, body)
+    //   .post(register ? `/register` : `/login`, body)
     //   .then(({ data }) => {
     //     console.log("AFTER AUTH", data);
+    //     authCtx.login(data.token, data.exp, data.userId);
     //   })
     //   .catch((err) => {
     //     setPassword("");
@@ -35,13 +36,18 @@ const Auth = () => {
     } else {
       axios
         .post(`${baseURL}/login`, body)
-        .then((res) => console.log(res.data))
+        .then(({ data }) => {
+          ///found it - all it does is console.log the data. it needs to sign in with the info sent back from the auth.js file -- maybe not. says "error on the register try Error "
+          console.log(data);
+          authCtx.login(data.token, data.exp, data.userId);
+        })
+
         .catch((err) => console.log("login error", err));
     }
     console.log("submitHandler called");
   };
 
-  const baseURL = `https://socialmtn.devmountain.com`;
+  const baseURL = `http://localhost:3000`;
 
   return (
     <main>

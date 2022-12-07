@@ -40,7 +40,7 @@ app.delete("/posts/:id", isAuthenticated, deletePost);
 
 //==============server==============
 sequelize.sync().then(() => {
-  app.listen(3000, () =>
+  app.listen(PORT, () =>
     console.log("***db sync successful and server running on 3000***")
   );
 });
