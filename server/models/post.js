@@ -1,17 +1,16 @@
-const { INTEGER } = require("sequelize");
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../util/database");
 
 module.exports = {
   Post: sequelize.define("post", {
     id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
     },
     title: DataTypes.STRING,
-    content: DataTypes.STRING,
+    content: DataTypes.TEXT,
     privateStatus: DataTypes.BOOLEAN,
   }),
 };

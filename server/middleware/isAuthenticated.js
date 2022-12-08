@@ -25,5 +25,7 @@ module.exports = {
       error.statusCode = 401;
       throw error;
     }
+
+    next();
   },
 };

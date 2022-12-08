@@ -14,7 +14,7 @@ module.exports = {
       const { username, password } = req.body;
       const foundUser = await User.findOne({ where: { username } });
       if (foundUser) {
-        res.send(200).send("User already exists");
+        res.sendStatus(200).send("User already exists");
       } else {
         ///register a user
         const salt = bcrypt.genSaltSync(10);
